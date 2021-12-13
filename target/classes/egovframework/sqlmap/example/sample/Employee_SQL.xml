@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Employee">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="searchVO" type="egovframework.example.sample.service.SampleDefaultVO"/>
+	<resultMap id="employee" class="egovframework.example.sample.service.EmployeeVO">
+	
+		<result property="emp_No" column="EMP_No"/>
+		<result property="emp_Name" column="EMP_Name"/>
+		<result property="emp_Addr" column="EMP_Addr"/>
+		<result property="emp_Birth" column="EMP_Birth"/>
+		<result property="emp_Gen" column="EMP_Gen"/>
+		<result property="emp_JoinDT" column= "EMP_JoinDT"/>
+		<result property="emp_Phone" column="EMP_Phone"/>
+		<result property="emp_Tel" column="EMP_Tel"/>
+		<result property="emp_Dept" column="EMP_Dept"/>
+		<result property="emp_Position" column="EMP_Position"/>
+		<result property="emp_Email" column="EMP_Email"/>
+		<result property="emp_Id" column="EMP_ID"/>
+		<result property="emp_Pw" column="EMP_PW"/>
+	</resultMap>
+
+	<insert id="employeeDAO.insertEmployee">
+<![CDATA[
+			INSERT INTO Employee
+				( EMP_No
+				  , EMP_Name
+				  , EMP_Addr
+				  , EMP_Birth
+				  , EMP_Gen
+				  , EMP_JoinDT
+				  , EMP_Phone
+				  , EMP_Tel
+				  , EMP_Dept
+				  , EMP_Position
+				  , EMP_Email
+				  , EMP_ID
+				  , EMP_PW
+				   )
+			VALUES 
+			( #emp_No#
+				  , #emp_Name#
+				  , #emp_Addr#
+				  , #emp_Birth#
+				  , #emp_Gen# 
+				  , #emp_JoinDT# 
+				  , #emp_Phone# 
+				  , #emp_Tel# 
+				  , #emp_Dept# 
+				  , #emp_Position# 
+				  , #emp_Email# 
+				  , #emp_Id# 
+				  , #emp_Pw# 
+				  )
+		]]>
+</insert>
+	
+	
+	
+	<update id="employeeDAO.updateEmployee">
+		<![CDATA[
+			UPDATE EMPLOYEE
+			SET EMP_No=#emp_No#
+			, EMP_Name=#emp_Name#
+				  , EMP_Addr=#emp_Addr#
+				  , EMP_Birth=#emp_Birth#
+				  , EMP_Gen=#emp_Gen# 
+				  , EMP_JoinDT#emp_JoinDT# 
+				  , EMP_Phone=#emp_Phone# 
+				  , EMP_Tel=#emp_Tel# 
+				  , EMP_Dept=#emp_Dept# 
+				  , EMP_Position=#emp_Position# 
+				  , EMP_Email=#emp_Email# 
+				  , EMP_ID=#emp_Id# 
+				  , EMP_PW=#emp_Pw# 
+				  WHERE EMP_No=#emp_No#
+		]]>
+	</update>
+	
+	<delete id="employeeDAO.deleteEmployee">
+		<![CDATA[
+			DELETE FROM EMPLOYEE 
+			WHERE EMP_No=#emp_No#
+		]]>
+	</delete>
+    
+    <select id="employeeDAO.selectEmployee" resultMap="employee">
+        <![CDATA[
+			SELECT
+				EMP_No, EMP_ID, EMP_PW, EMP_Name, EMP_Addr, EMP_Birth, EMP_Dept, EMP_Gen, EMP_Position, EMP_JoinDT, EMP_Email, EMP_Phone, EMP_Tel
+			FROM EMPLOYEE
+			WHERE EMP_No=#emp_No#
+        ]]>
+    </select>
+	
+	<select id="employeeDAO.selectEmployeeList" parameterClass="searchVO" resultClass="egovMap">
+
+			SELECT
+				EMP_No, EMP_ID, EMP_Name, EMP_Dept, EMP_Position, EMP_Email, EMP_Phone
+			FROM EMPLOYEE
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				EMP_No LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				NAME LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+			ORDER BY EMP_No DESC
+			LIMIT #recordCountPerPage# OFFSET #firstIndex#		
+	</select>
+	
+	<select id="employeeDAO.selectEmployeeListTotCnt" parameterClass="searchVO" resultClass="int">
+
+			SELECT COUNT(*) totcnt
+			FROM EMPLOYEE
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				ID LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				NAME LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>
