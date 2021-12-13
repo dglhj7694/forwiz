@@ -75,7 +75,7 @@ public class EmployeeController {
 	 * @return "egovSampleRegister"
 	 * @exception Exception
 	 */
-	@RequestMapping(value = "/addEmployeePage.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/addEmployeePage.do", method = RequestMethod.POST)
 	public String addEmployeeView(@ModelAttribute("searchVO") SampleDefaultVO searchVO, Model model) throws Exception {
 		model.addAttribute("employeeVO", new EmployeeVO());
 		return "sample/employeeRegister";
@@ -159,8 +159,10 @@ public class EmployeeController {
 		}
 
 		employeeService.updateEmployee(employeeVO);
+		System.out.println("error===================");
+		System.err.println(employeeVO);
 		status.setComplete();
-		return "forward:/egovSampleList.do";
+		return "forward:/employeeList.do";
 	}
 
 	/**

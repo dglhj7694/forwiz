@@ -32,6 +32,8 @@ public class EmployeeVO {
 	private String emp_Id;
 	//비밀번호
 	private String emp_Pw;
+	//비밀번호
+	private String emp_Pwck;
 	public String getEmp_No() {
 		return emp_No;
 	}
@@ -118,6 +120,12 @@ public class EmployeeVO {
 	}
 	public String getEmp_Pw() {
 		return emp_Pw;
+	}
+	public String getEmp_Pwck() {
+		return emp_Pwck;
+	}
+	public void setEmp_Pwck(String emp_Pwck) {
+		this.emp_Pwck = emp_Pwck;
 	}
 	public void setEmp_Pw(String emp_Pw) {
 		this.emp_Pw = emp_Pw;

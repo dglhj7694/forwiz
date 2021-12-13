@@ -18,5 +18,12 @@
 			</field>
         </form>
     </formset>
+    <formset>
+        <form name="employeeVO">
+        	<field property="emp_No" depends="required">
+        		<arg0 key="사용자 번호" />
+			</field>
+        </form>
+    </formset>
 
 </form-validation>

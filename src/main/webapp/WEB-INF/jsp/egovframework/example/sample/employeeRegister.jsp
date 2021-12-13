@@ -35,12 +35,12 @@
         /* 글 등록 function */
         function fn_employee_save() {
         	frm = document.detailForm;
-        	if(!validateEmployeeVO(frm)){
+         	if(!validateEmployeeVO(frm)){
                 return;
-            }else{
+            }else{ 
             	frm.action = "<c:url value="${registerFlag == 'create' ? '/addEmployee.do' : '/updateEmployee.do'}"/>";
                 frm.submit();
-            }
+            } 
         }
         
         -->
@@ -84,10 +84,10 @@
     				<form:input path="emp_Pw" maxlength="30" cssClass="txt"/>
     				<form:errors path="emp_Pw" />
     			</td>
-    			<td class="tbtd_caption"><label for="emp_Pw">비밀번호확인</label></td>
+    			<td class="tbtd_caption"><label for="emp_Pwck">비밀번호확인</label></td>
     			<td class="tbtd_content">
-    				<form:input path="emp_Pw" maxlength="30" cssClass="txt"/>
-    				<form:errors path="emp_Pw" />
+    				<form:input path="emp_Pwck" maxlength="30" cssClass="txt"/>
+    				<form:errors path="emp_Pwck" />
     			</td>
     		</tr>
     		<tr>

@@ -30,8 +30,8 @@ public class EmployeeServiceImpl extends EgovAbstractServiceImpl implements Empl
 	//  @Resource(name="employeeMapper")
 	//	private EmployeeMapper employeeDAO;
 	/** ID Generation */
-	@Resource(name = "egovIdGnrService")
-	private EgovIdGnrService egovIdGnrService;
+	@Resource(name = "employeeIdGnrService")
+	private EgovIdGnrService employeeIdGnrService;
 	
 	//사용자 등록
 	@Override
@@ -39,7 +39,7 @@ public class EmployeeServiceImpl extends EgovAbstractServiceImpl implements Empl
 		
 		
 		// TODO Auto-generated method stub
-		String id = egovIdGnrService.getNextStringId();
+		String id = employeeIdGnrService.getNextStringId();
 		vo.setEmp_No(id);
 		LOGGER.debug(vo.toString());
 
