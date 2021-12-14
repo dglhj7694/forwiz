@@ -27,14 +27,14 @@
         
         /* 글 목록 화면 function */
         function fn_employee_selectList() {
-        	document.listForm.action = "<c:url value='/EmployeeList.do'/>";
+        	document.listForm.action = "<c:url value='/employeeList.do'/>";
            	document.listForm.submit();
         }
         
         /* pagination 페이지 링크 function */
         function fn_egov_link_page(pageNo){
         	document.listForm.pageIndex.value = pageNo;
-        	document.listForm.action = "<c:url value='/egovEmployeeList.do'/>";
+        	document.listForm.action = "<c:url value='/employeeList.do'/>";
            	document.listForm.submit();
         }
         
@@ -80,8 +80,11 @@
         	
         	
         	<!-- 네비 -->
-		<!-- <a href="/employeeList.do">사용자 목록 조회</a>       	  	 -->	
+        		    
+        	  			<a href="/forwiz/egovSampleList.do">사용자 목록 조회</a>       	  		
+        	  			<a href="/forwiz/employeeList.do">사용자 목록 조회</a>       	  		
         	
+						<!-- <script type="text/javaScript">document.location.href="<c:url value='/employeeList.do'/>"</script> --> 
         	
         	
         	
@@ -121,7 +124,7 @@
             				<td align="center" class="listtd"><c:out value="${result.emp_Email}"/>&nbsp;</td> --%>
             				
             				<td align="center" class="listtd"><c:out value="${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageSize + status.count)}"/></td>
-            				<td align="center" class="listtd"><a href="javascript:fn_employee_select('<c:out value="${result.empNo}"/>')"><c:out value="${result.empNo}"/></a></td>
+            				<td align="center" class="listtd"><a style="color : blue" href="javascript:fn_employee_select('<c:out value="${result.empNo}"/>')"><c:out value="${result.empNo}"/></a></td>
             				<td align="left" class="listtd"><c:out value="${result.empId}"/>&nbsp;</td>
             				<td align="center" class="listtd"><c:out value="${result.empName}"/>&nbsp;</td>
             				<td align="center" class="listtd"><c:out value="${result.empDept}"/>&nbsp;</td>

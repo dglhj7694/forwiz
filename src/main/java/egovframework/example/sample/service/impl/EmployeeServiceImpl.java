@@ -24,11 +24,11 @@ public class EmployeeServiceImpl extends EgovAbstractServiceImpl implements Empl
 	
 	/** SampleDAO */
 	// TODO ibatis 사용
-	@Resource(name = "employeeDAO")
-	private EmployeeDAO employeeDAO;
+/*	@Resource(name = "employeeDAO")
+	private EmployeeDAO employeeDAO;*/
 	// TODO mybatis 사용
-	//  @Resource(name="employeeMapper")
-	//	private EmployeeMapper employeeDAO;
+	  @Resource(name="employeeMapper")
+		private EmployeeMapper employeeDAO;
 	/** ID Generation */
 	@Resource(name = "employeeIdGnrService")
 	private EgovIdGnrService employeeIdGnrService;

@@ -7,6 +7,7 @@
 		<result property="emp_Name" column="EMP_Name"/>
 		<result property="emp_Addr" column="EMP_Addr"/>
 		<result property="emp_Birth" column="EMP_Birth"/>
+		<result property="emp_Gen" column="EMP_Gen"/>
 		<result property="emp_JoinDT" column= "EMP_JoinDT"/>
 		<result property="emp_Phone" column="EMP_Phone"/>
 		<result property="emp_Tel" column="EMP_Tel"/>
@@ -15,6 +16,7 @@
 		<result property="emp_Email" column="EMP_Email"/>
 		<result property="emp_Id" column="EMP_ID"/>
 		<result property="emp_Pw" column="EMP_PW"/>
+		<result property="emp_Pwck" column="EMP_PWck"/>
 	</resultMap>
 
 	<insert id="insertEmployee" parameterType="EmployeeVO">
@@ -29,11 +31,11 @@
 				  , EMP_Phone
 				  , EMP_Tel
 				  , EMP_Dept
-				  , EMP_Positon
+				  , EMP_Position
 				  , EMP_Email
 				  , EMP_ID
 				  , EMP_PW
-
+				  , EMP_PWck
 				   )
 			VALUES ( #{emp_No}
 				  , #{emp_Name}
@@ -48,6 +50,7 @@
 				  , #{emp_Email} 
 				  , #{emp_Id} 
 				  , #{emp_Pw}  
+				  , #{emp_Pwck}  
 				  )
 
 	</insert>
@@ -60,7 +63,7 @@
 				  , EMP_Addr=#{emp_Addr}
 				  , EMP_Birth=#{emp_Birth}
 				  , EMP_Gen=#{emp_Gen} 
-				  , EMP_JoinDT#{emp_JoinDT} 
+				  , EMP_JoinDT=#{emp_JoinDT} 
 				  , EMP_Phone=#{emp_Phone} 
 				  , EMP_Tel=#{emp_Tel} 
 				  , EMP_Dept=#{emp_Dept} 
@@ -68,6 +71,7 @@
 				  , EMP_Email=#{emp_Email} 
 				  , EMP_ID=#{emp_Id} 
 				  , EMP_PW=#{emp_Pw} 
+				  , EMP_PWck=#{emp_Pwck} 
 				  WHERE EMP_No=#{emp_No}
 
 	</update>
@@ -82,7 +86,7 @@
 	<select id="selectEmployee" resultMap="employee">
 
 			SELECT
-				EMP_No, EMP_ID, EMP_Name, EMP_Dept, EMP_Position, EMP_Email, EMP_Phone
+				EMP_No, EMP_ID, EMP_PW, EMP_PWck, EMP_Name, EMP_Addr, EMP_Birth, EMP_Dept, EMP_Gen, EMP_Position, EMP_JoinDT, EMP_Email, EMP_Phone, EMP_Tel
 			FROM EMPLOYEE
 			WHERE EMP_No=#{emp_No}
 
@@ -91,7 +95,7 @@
 	<select id="selectEmployeeList" parameterType="searchVO" resultType="egovMap">
 
 			SELECT
-				EMP_No, EMP_ID, EMP_PW, EMP_Name, EMP_Addr, EMP_Birth, EMP_Dept, EMP_Gen, EMP_Position, EMP_JoinDT, EMP_Email, EMP_Phone, EMP_Tel
+				EMP_No, EMP_ID, EMP_Name, EMP_Dept, EMP_Position, EMP_Email, EMP_Phone
 			FROM EMPLOYEE
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">

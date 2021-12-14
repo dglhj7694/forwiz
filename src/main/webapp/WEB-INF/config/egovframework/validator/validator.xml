@@ -20,8 +20,14 @@
     </formset>
     <formset>
         <form name="employeeVO">
-        	<field property="emp_No" depends="required">
-        		<arg0 key="사용자 번호" />
+        	<field property="emp_Id" depends="required">
+        		<arg0 key="아이디" />
+			</field>
+        	<field property="emp_Pw" depends="required">
+        		<arg0 key="비밀번호" />
+			</field>
+        	<field property="emp_Pwck" depends="required">
+        		<arg0 key="비밀번호 확인" />
 			</field>
         </form>
     </formset>
