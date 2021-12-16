@@ -42,7 +42,6 @@
            	document.detailForm.action = "<c:url value='/deleteEmployee.do'/>";
            	document.detailForm.submit();
         }
-        
         /* 글 등록 function */
         function fn_employee_save() {
         	frm = document.detailForm;
