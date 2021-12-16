@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -34,7 +35,8 @@ public class EmployeeController {
 	/** Validator */
 	@Resource(name = "beanValidator")
 	protected DefaultBeanValidator beanValidator;
-
+/*    @Autowired
+    private BCryptPasswordEncoder pwEncoder;*/
 	/**
 	 *  목록을 조회한다. (pageing)
 	 */

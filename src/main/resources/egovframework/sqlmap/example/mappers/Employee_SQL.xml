@@ -101,15 +101,17 @@
 			<if test="searchKeyword != null and searchKeyword != ''">
 		        <choose>
 		            <when test="searchCondition == 0">
-						AND	ID LIKE '%' || #{searchKeyword} || '%'
+						AND	EMP_No LIKE '%' || #{searchKeyword} || '%'
 					</when>
 		            <when test="searchCondition == 1">
-						AND	NAME LIKE '%' || #{searchKeyword} || '%'
+						AND	EMP_Name LIKE '%' || #{searchKeyword} || '%'
 					</when>
 				</choose>
 			</if>
-			ORDER BY EMP_No ASC
-			LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+
+
+	ORDER BY EMP_No ASC
+	LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
 	</select>
 
 	<select id="selectEmployeeListTotCnt" parameterType="searchVO" resultType="int">
@@ -120,10 +122,10 @@
 			<if test="searchKeyword != null and searchKeyword != ''">
 		        <choose>
 		            <when test="searchCondition == 0">
-						AND ID LIKE '%' || #{searchKeyword} || '%'
+						AND EMP_No LIKE '%' || #{searchKeyword} || '%'
 					</when>
 		            <when test="searchCondition == 1">
-						AND	NAME LIKE '%' || #{searchKeyword} || '%'
+						AND	EMP_Name LIKE '%' || #{searchKeyword} || '%'
 					</when>
 				</choose>
 			</if>

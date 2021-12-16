@@ -30,7 +30,7 @@
     <validator:javascript formName="employeeVO" staticJavascript="false" xhtml="true" cdata="false"/>
     
     <script type="text/javaScript" language="javascript" defer="defer">
-        <!--
+
         /* 글 목록 화면 function */
         function fn_employee_selectList() {
            	document.detailForm.action = "<c:url value='/employeeList.do'/>";
@@ -46,15 +46,19 @@
         /* 글 등록 function */
         function fn_employee_save() {
         	frm = document.detailForm;
-         	if(!validateEmployeeVO(frm)){
+         	if(!validateEmployeeVO(frm)){				
                 return;
-            }else{ 
+            }else if(frm.emp_Pw.value != frm.emp_Pwck.value){
+                alert("비밀번호와 비밀번화 확인이 일치하지 않습니다.");
+                return;
+            }
+         	 else{ 
             	frm.action = "<c:url value="${registerFlag == 'create' ? '/addEmployee.do' : '/updateEmployee.do'}"/>";
                 frm.submit();
             } 
         }
         
-        -->
+
     </script>
 </head>
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
@@ -105,7 +109,7 @@
     		<tr>
     			<td class="tbtd_caption"><label for="emp_JoinDT">입사일</label></td>
     			<td class="tbtd_content">
-    				<form:input path="emp_JoinDT" name="emp_JoinDT" maxlength="30" cssClass="txt" autocomplete="off" readonly="readonly"/>
+    				<form:input path="emp_JoinDT" name="emp_JoinDT" maxlength="30" cssClass="txt" autocomplete="off" readonly="true"/>
     				<form:errors path="emp_JoinDT" />
     			</td>
     			<td class="tbtd_caption"><label for="emp_No">사원번호<p style="color : red">(번호 자동 부여)</p></label></td>
@@ -119,13 +123,13 @@
     			<td class="tbtd_content">
     				<form:select path="emp_Dept" cssClass="use">
     				 	<option value="">--부서선택--</option>
-    					<form:option value="01" label="경영관리팀" />
-    					<form:option value="02" label="전략사업본부" />
-    					<form:option value="03" label="영업1본부" />
-    					<form:option value="04" label="영업2본부" />
-    					<form:option value="05" label="SI사업본부" />
-    					<form:option value="06" label="금융사업부" />
-    					<form:option value="07" label="부설연구소" />  					
+    					<form:option value="경영관리팀" label="경영관리팀" />
+    					<form:option value="전략사업본부" label="전략사업본부" />
+    					<form:option value="영업1본부" label="영업1본부" />
+    					<form:option value="영업2본부" label="영업2본부" />
+    					<form:option value="SI사업본부" label="SI사업본부" />
+    					<form:option value="금융사업부" label="금융사업부" />
+    					<form:option value="부설연구소" label="부설연구소" />  					
     				</form:select>
     			<%-- 	<form:input path="emp_Dept" maxlength="30" cssClass="txt"/> --%>
     				<form:errors path="emp_Dept" />
@@ -141,17 +145,17 @@
     			<td class="tbtd_content">
     			    <form:select path="emp_Position" cssClass="use">
     			    <option value="">--직급선택--</option>
-    					<form:option value="01" label="회장" />
-    					<form:option value="02" label="사장" />
-    					<form:option value="03" label="부사장" />
-    					<form:option value="04" label="이사" />
-    					<form:option value="05" label="부장" />
-    					<form:option value="06" label="차장" />
-    					<form:option value="07" label="과장" />  					
-    					<form:option value="08" label="대리" />  					
-    					<form:option value="09" label="주임" />  					
-    					<form:option value="10" label="사원" />  					
-    					<form:option value="11" label="인턴" />  					
+    					<form:option value="회장" label="회장" />
+    					<form:option value="사장" label="사장" />
+    					<form:option value="부사장" label="부사장" />
+    					<form:option value="이사" label="이사" />
+    					<form:option value="부장" label="부장" />
+    					<form:option value="차장" label="차장" />
+    					<form:option value="과장" label="과장" />  					
+    					<form:option value="대리" label="대리" />  					
+    					<form:option value="주임" label="주임" />  					
+    					<form:option value="사원" label="사원" />  					
+    					<form:option value="인턴" label="인턴" />  					
     				</form:select>
 <%--     				<form:input path="emp_Position" maxlength="30" cssClass="txt"/> --%>
     				<form:errors path="emp_Position" />
@@ -165,7 +169,7 @@
     		<tr>
     			<td class="tbtd_caption"><label for="emp_Birth">생년월일</label></td>
     			<td class="tbtd_content">
-    				<form:input path="emp_Birth" maxlength="30" cssClass="txt" autocomplete="off" readonly="readonly"/>
+    				<form:input path="emp_Birth" maxlength="30" cssClass="txt" autocomplete="off" readonly="true"/>
     				<form:errors path="emp_Birth" />
     			</td>
     			<td class="tbtd_caption"><label for="emp_Gen">성별</label></td>

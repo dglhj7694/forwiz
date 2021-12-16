@@ -62,8 +62,8 @@
         			<li>
         			    <label for="searchCondition" style="visibility:hidden;"><spring:message code="search.choose" /></label>
         				<form:select path="searchCondition" cssClass="use">
-        					<form:option value="1" label="Name" />
-        					<form:option value="0" label="ID" />
+        					<form:option value="1" label="EMP_Name" />
+        					<form:option value="0" label="EMP_No" />
         				</form:select>
         			</li>
         			<li><label for="searchKeyword" style="visibility:hidden;display:none;"><spring:message code="search.keyword" /></label>
@@ -98,7 +98,7 @@
         				<col width="80"/>
         				<col width="80"/>
         				<col width="140"/>
-        				<col width="60"/>
+        				<col width="80"/>
         				<col width="180"/>
         				<col width="220"/>
         			</colgroup>

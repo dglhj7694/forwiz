@@ -19,8 +19,6 @@ public class EmployeeVO {
 	private String emp_Tel;
 	//부서
 	private String emp_Dept;
-	//부서 이름
-	private String deptName;
 	//직위
 	private String emp_Position;
 	//메일
@@ -88,27 +86,7 @@ public class EmployeeVO {
 	}
 	public void setEmp_Dept(String emp_Dept) {
 		this.emp_Dept = emp_Dept;
-/*		if(emp_Dept.equals("01")) {
-			this.deptName="경영관리팀";
-		} else if(emp_Dept.equals("02")){
-			this.deptName="전략사업본부";
-		}else if(emp_Dept.equals("03")){
-			this.deptName="영업1본부";
-		}else if(emp_Dept.equals("04")){
-			this.deptName="영업2본부";
-		}else if(emp_Dept.equals("05")){
-			this.deptName="SI사업본부";
-		}else if(emp_Dept.equals("06")){
-			this.deptName="금융사업부";
-		}else{
-			this.deptName="부설연구소";
-		}*/
-	}
-	public String getdeptName() {
-		return deptName;
-	}
-	public void setdeptName(String deptName) {
-		this.deptName = deptName;
+
 	}
 	public String getEmp_Position() {
 		return emp_Position;

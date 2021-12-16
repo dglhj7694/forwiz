@@ -14,6 +14,7 @@ import egovframework.example.sample.service.EmployeeService;
 import egovframework.example.sample.service.EmployeeVO;
 import egovframework.example.sample.service.SampleDefaultVO;
 import egovframework.example.sample.service.SampleVO;
+import egovframework.example.sample.service.EgovFileScrty;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 
@@ -40,9 +41,12 @@ public class EmployeeServiceImpl extends EgovAbstractServiceImpl implements Empl
 		
 		// TODO Auto-generated method stub
 		String id = employeeIdGnrService.getNextStringId();
+		String pw = EgovFileScrty.encryptPassword(vo.getEmp_Pw());
 		vo.setEmp_No(id);
+		vo.setEmp_Pw(pw);
+		vo.setEmp_Pwck(pw);
 		LOGGER.debug(vo.toString());
-
+		
 		employeeDAO.insertEmployee(vo);
 		return id;
 	}
