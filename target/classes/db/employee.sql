@@ -1,6 +1,9 @@
 -- 사용자 ddl
+use example;
 
+drop table empids;
 CREATE TABLE EMPIDS(TABLE_NAME VARCHAR(16) NOT NULL PRIMARY KEY,NEXT_ID DECIMAL(30) NOT NULL);
+insert empids values('EMPLOYEE',01);
 
 
 DROP TABLE EMPLOYEE;

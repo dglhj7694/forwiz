@@ -23,6 +23,9 @@
         	<field property="emp_Id" depends="required">
         		<arg0 key="아이디" />
 			</field>
+        	<field property="emp_Name" depends="required">
+        		<arg0 key="이름" />
+			</field>
         	<field property="emp_Pw" depends="required">
         		<arg0 key="비밀번호" />
 			</field>

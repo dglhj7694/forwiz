@@ -101,10 +101,10 @@
 			<if test="searchKeyword != null and searchKeyword != ''">
 		        <choose>
 		            <when test="searchCondition == 0">
-						AND	EMP_No LIKE '%' || #{searchKeyword} || '%'
+						AND   EMP_No LIKE CONCAT('%', #{searchKeyword},'%')
 					</when>
 		            <when test="searchCondition == 1">
-						AND	EMP_Name LIKE '%' || #{searchKeyword} || '%'
+						AND   EMP_Name LIKE CONCAT('%', #{searchKeyword},'%')
 					</when>
 				</choose>
 			</if>
@@ -122,10 +122,10 @@
 			<if test="searchKeyword != null and searchKeyword != ''">
 		        <choose>
 		            <when test="searchCondition == 0">
-						AND EMP_No LIKE '%' || #{searchKeyword} || '%'
+						AND   EMP_No LIKE CONCAT('%', #{searchKeyword},'%')
 					</when>
 		            <when test="searchCondition == 1">
-						AND	EMP_Name LIKE '%' || #{searchKeyword} || '%'
+						AND   EMP_Name LIKE CONCAT('%', #{searchKeyword},'%')
 					</when>
 				</choose>
 			</if>

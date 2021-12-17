@@ -82,12 +82,19 @@
     		</colgroup>
     		<%-- <c:if test="${registerFlag == 'modify'}"> --%>	
         		<tr>
-        			<td rowspan="6">이미지 넣을 공간</td>
+        			<td rowspan="6">
+        			<c:if test="${registerFlag == 'create'}">
+        			<img width="225px" height="300px" id="image_section" src="#" alt="your photo" /></c:if>        			
+        			
+        			<c:if test="${registerFlag == 'modify'}">
+        			<img width="225px" height="300px" id="image_section" src="#" alt="your photo" /></c:if>        			
+        			</td>
+        			
         			<td class="tbtd_caption" width="80px"><label for="emp_Id">아이디</label></td>
         			<td class="tbtd_content">
         				<form:input path="emp_Id" cssClass="txt" maxlength="10"/>
         			</td>
-        			<td class="tbtd_caption"><label for="emp_Name">이름</label></td>
+        			<td class="tbtd_caption" width="80px"><label for="emp_Name">이름</label></td>
         			<td class="tbtd_content">
         				<form:input path="emp_Name" cssClass="txt" maxlength="10"/>
         			</td>
@@ -180,7 +187,13 @@
     			</td>
     		</tr>
     		<tr>
-    			<td>사진등록 버튼 구현 ㄱ</td>
+    			<!-- <td>사진등록 버튼 구현 ㄱ</td> -->
+    			<td class="tbtd_content">
+    				<form:input type ="file" path="input_photo" id="input_photo" onchange="readURL(this);"/>   				  				
+    				<form:errors path="input_photo" />
+    			</td>
+    			
+    			
     			<td class="tbtd_caption"><label for="emp_Email">메일</label></td>
     			<td class="tbtd_content">
     				<form:input path="emp_Email" maxlength="30" cssClass="txt"/>
@@ -250,8 +263,18 @@ const config = {
 	    dayNamesMin: ['일','월','화','수','목','금','토'],
 	    yearSuffix: '년',
 	    changeMonth:true,
-	    changeYear:true	    
+	    changeYear:true,
+	    minDate:'-100y',
+	    yearRange:'c-100:c+10',
+	    showButtonPanel: true,
+	    currentText: "오늘 날짜" // 오늘 날짜로 이동하는 버튼 패널    	
 }
+
+$('button.ui-datepicker-current').live('click', function() {
+
+    $.datepicker._curInst.input.datepicker('setDate', new Date()).datepicker('hide').blur();
+
+});
 
 
 /* 캘린더 */
@@ -261,6 +284,20 @@ $(function() {
 $(function() {
   $( "input[name='emp_Birth']" ).datepicker(config);
 });
+
+
+
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function (e) {
+$('#image_section').attr('src', e.target.result);
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+
+
 </script>
 
 
