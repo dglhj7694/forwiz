@@ -1,5 +1,7 @@
 package egovframework.example.sample.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EmployeeVO {
 	//사원번호
 	private String emp_No;
@@ -33,6 +35,10 @@ public class EmployeeVO {
 	private String emp_Pw;
 	//비밀번호
 	private String emp_Pwck;
+	//첨부파일
+	private String fileName;
+	private MultipartFile uploadFile;
+	
 	public String getEmp_No() {
 		return emp_No;
 	}
@@ -117,6 +123,18 @@ public class EmployeeVO {
 	}
 	public void setEmp_Id(String emp_Id) {
 		this.emp_Id = emp_Id;
+	}
+	public String getfileName() {
+		return fileName;
+	}
+	public void setfileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 	public String getEmp_Pw() {
 		return emp_Pw;

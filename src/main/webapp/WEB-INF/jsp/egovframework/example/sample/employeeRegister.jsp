@@ -62,7 +62,7 @@
 </head>
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
 
-<form:form commandName="employeeVO" id="detailForm" name="detailForm">
+<form:form commandName="employeeVO" id="detailForm" name="detailForm" encType="multipart/form-data">
     <div id="content_pop">
     	<!-- 타이틀 -->
     	<div id="title">
@@ -194,9 +194,13 @@
     		<tr>
     			<!-- <td>사진등록 버튼 구현 ㄱ</td> -->
     			<td class="tbtd_content">
-    				<form:input type ="file" path="input_photo" id="input_photo" onchange="readURL(this);"/>   				  				
+    				<form:input type ="file" path="uploadFile" id="uploadFile" name="uploadFile" onchange="readURL(this);"/>   				  				
     				<form:errors path="input_photo" />
     			</td>
+    			
+    			
+    			
+    			
     			<td class="tbtd_caption"><label for="emp_Email">메일</label></td>
     			<td class="tbtd_content">
     			<c:if test="${registerFlag == 'create'}">

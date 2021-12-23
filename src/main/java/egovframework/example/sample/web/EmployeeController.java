@@ -1,9 +1,12 @@
 package egovframework.example.sample.web;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import egovframework.example.sample.service.EmployeeService;
@@ -98,6 +102,18 @@ public class EmployeeController {
 	@RequestMapping(value = "/addEmployee.do", method = RequestMethod.POST)
 	public String addEmployee(@ModelAttribute("searchVO") SampleDefaultVO searchVO, EmployeeVO employeeVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
+		
+		String fileName= null;
+		MultipartFile uploadFile = employeeVO.getUploadFile();
+        if (!uploadFile.isEmpty()) {
+            String originalFileName = uploadFile.getOriginalFilename();
+            String ext = FilenameUtils.getExtension(originalFileName); // 확장자 구하기
+            UUID uuid = UUID.randomUUID(); // UUID 구하기
+            fileName = uuid + "." + ext;
+            uploadFile.transferTo(new File("C:\\upload\\" + fileName));
+        }
+        employeeVO.setfileName(fileName);
+ 
 
 		// Server-Side Validation
 		beanValidator.validate(employeeVO, bindingResult);
@@ -152,7 +168,18 @@ public class EmployeeController {
 	@RequestMapping("/updateEmployee.do")
 	public String updateEmployee(@ModelAttribute("searchVO") SampleDefaultVO searchVO, EmployeeVO employeeVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
-
+		
+		String fileName= null;
+		MultipartFile uploadFile = employeeVO.getUploadFile();
+        if (!uploadFile.isEmpty()) {
+            String originalFileName = uploadFile.getOriginalFilename();
+            String ext = FilenameUtils.getExtension(originalFileName); // 확장자 구하기
+            UUID uuid = UUID.randomUUID(); // UUID 구하기
+            fileName = uuid + "." + ext;
+            uploadFile.transferTo(new File("C:\\upload\\" + fileName));
+        }
+        employeeVO.setfileName(fileName);
+ 
 		beanValidator.validate(employeeVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {

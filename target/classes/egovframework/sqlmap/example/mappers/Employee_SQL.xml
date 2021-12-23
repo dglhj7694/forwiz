@@ -17,6 +17,7 @@
 		<result property="emp_Id" column="EMP_ID"/>
 		<result property="emp_Pw" column="EMP_PW"/>
 		<result property="emp_Pwck" column="EMP_PWck"/>
+		<result property="fileName" column="FileName"/>
 	</resultMap>
 
 	<insert id="insertEmployee" parameterType="EmployeeVO">
@@ -36,6 +37,7 @@
 				  , EMP_ID
 				  , EMP_PW
 				  , EMP_PWck
+				  , FileName
 				   )
 			VALUES ( #{emp_No}
 				  , #{emp_Name}
@@ -51,6 +53,7 @@
 				  , #{emp_Id} 
 				  , #{emp_Pw}  
 				  , #{emp_Pwck}  
+				  , #{fileName}  
 				  )
 
 	</insert>
@@ -72,6 +75,7 @@
 				  , EMP_ID=#{emp_Id} 
 				  , EMP_PW=#{emp_Pw} 
 				  , EMP_PWck=#{emp_Pwck} 
+				  , FileName=#{fileName} 
 				  WHERE EMP_No=#{emp_No}
 
 	</update>
