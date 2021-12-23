@@ -82,7 +82,7 @@
     		</colgroup>
     		<%-- <c:if test="${registerFlag == 'modify'}"> --%>	
         		<tr>
-        			<td rowspan="6">
+        			<td rowspan="6" width="225px" height="300px">
         			<c:if test="${registerFlag == 'create'}">
         			<img width="225px" height="300px" id="image_section" src="#" alt="your photo" /></c:if>        			
         			
@@ -115,13 +115,18 @@
     		<tr>
     			<td class="tbtd_caption"><label for="emp_JoinDT">입사일</label></td>
     			<td class="tbtd_content">
-    				<form:input path="emp_JoinDT" name="emp_JoinDT" maxlength="30" cssClass="txt" autocomplete="off" readonly="true"/>
+    				<form:input path="emp_JoinDT" name="emp_JoinDT" maxlength="30" cssClass="txt" autocomplete="off" readonly="true" />
     				<form:errors path="emp_JoinDT" />
     			</td>
-    			<td class="tbtd_caption"><label for="emp_No">사원번호<p style="color : red">(번호 자동 부여)</p></label></td>
+    			<td class="tbtd_caption"><label for="emp_No">사원번호</label></td>
     			<td class="tbtd_content">
+    			<c:if test="${registerFlag == 'create'}">
+    			<p style="color : red">(번호 자동 부여)</p>
+    			</c:if>
+    			<c:if test="${registerFlag == 'modify'}">
     				<form:input path="emp_No" maxlength="30" cssClass="essentiality" readonly="true" />
     				<form:errors path="emp_No" />
+    			</c:if>
     			</td>
     		</tr>
     		<tr>
@@ -142,7 +147,7 @@
     			</td>
     			<td class="tbtd_caption"><label for="emp_Tel">전화번호</label></td>
     			<td class="tbtd_content">
-    				<form:input path="emp_Tel" maxlength="30" cssClass="txt"/>
+    				<form:input path="emp_Tel" type="text" name="tel" class="tel" maxlength="12" placeholder="전화번호"/>
     				<form:errors path="emp_Tel" />
     			</td>
     		</tr>
@@ -168,7 +173,7 @@
     			</td>
     			<td class="tbtd_caption"><label for="emp_Phone">휴대폰번호</label></td>
     			<td class="tbtd_content">
-    				<form:input path="emp_Phone" maxlength="30" cssClass="txt"/>
+    				 <form:input path="emp_Phone" type="text" name="phone" class="phone" maxlength="13" placeholder="휴대폰번호"/>
     				<form:errors path="emp_Phone" />
     			</td>
     		</tr>
@@ -192,13 +197,17 @@
     				<form:input type ="file" path="input_photo" id="input_photo" onchange="readURL(this);"/>   				  				
     				<form:errors path="input_photo" />
     			</td>
-    			
-    			
     			<td class="tbtd_caption"><label for="emp_Email">메일</label></td>
     			<td class="tbtd_content">
-    				<form:input path="emp_Email" maxlength="30" cssClass="txt"/>
+    			<c:if test="${registerFlag == 'create'}">
+    				아이디 + @forwiz.com
+    			</c:if>
+    				<c:if test="${registerFlag == 'modify'}">
+    				<form:input path="emp_Email" maxlength="30" cssClass="essentiality" readonly="true" />
     				<form:errors path="emp_Email" />
+    				</c:if>
     			</td>
+    			
     			<td class="tbtd_caption"><label for="emp_Addr">주소</label></td>
     			<td class="tbtd_content">
     				<form:input path="emp_Addr" maxlength="30" cssClass="txt"/>
@@ -206,6 +215,7 @@
     			</td>
     		</tr>
     	</table>
+
       </div>
       
     	<div id="sysbtn">
@@ -281,9 +291,12 @@ $('button.ui-datepicker-current').live('click', function() {
 $(function() {
   $( "input[name='emp_JoinDT']" ).datepicker(config);
 });
+
 $(function() {
   $( "input[name='emp_Birth']" ).datepicker(config);
 });
+
+
 
 
 
@@ -296,6 +309,36 @@ $('#image_section').attr('src', e.target.result);
 reader.readAsDataURL(input.files[0]);
 }
 }
+
+$('.phone').keydown(function(event) {
+    var key = event.charCode || event.keyCode || 0;
+    $text = $(this);
+    if (key !== 8 && key !== 9) {
+        if ($text.val().length === 3) {
+            $text.val($text.val() + '-');
+        }
+        if ($text.val().length === 8) {
+            $text.val($text.val() + '-');
+        }
+    }
+ 
+    return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));          
+});
+
+$('.tel').keydown(function(event) {
+    var key = event.charCode || event.keyCode || 0;
+    $text = $(this);
+    if (key !== 8 && key !== 9) {
+        if ($text.val().length === 3) {
+            $text.val($text.val() + '-');
+        }
+        if ($text.val().length === 7) {
+            $text.val($text.val() + '-');
+        }
+    }
+ 
+    return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));          
+});
 
 
 </script>

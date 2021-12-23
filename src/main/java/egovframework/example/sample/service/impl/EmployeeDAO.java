@@ -33,12 +33,10 @@ public class EmployeeDAO extends EgovAbstractDAO{
 		return (EmployeeVO) select("employeeDAO.selectEmployee", vo);
 	}
 
-	
 	//사용자 목록 보기
 	public List<?> selectEmployeeList(SampleDefaultVO searchVO) throws Exception {
 		return list("employeeDAO.selectEmployeeList", searchVO);
 	}
-
 
 	//사용자 목록 총 갯수
 	public int selectEmployeeListTotCnt(SampleDefaultVO searchVO) {

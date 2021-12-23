@@ -40,15 +40,16 @@ public class EmployeeServiceImpl extends EgovAbstractServiceImpl implements Empl
 		
 		
 		// TODO Auto-generated method stub
-		String id = employeeIdGnrService.getNextStringId();
+		String no = employeeIdGnrService.getNextStringId();
 		String pw = EgovFileScrty.encryptPassword(vo.getEmp_Pw());
-		vo.setEmp_No(id);
+				
+		vo.setEmp_No(no);
 		vo.setEmp_Pw(pw);
 		vo.setEmp_Pwck(pw);
 		LOGGER.debug(vo.toString());
 		
 		employeeDAO.insertEmployee(vo);
-		return id;
+		return no;
 	}
 
 	//사용자 정보 수정

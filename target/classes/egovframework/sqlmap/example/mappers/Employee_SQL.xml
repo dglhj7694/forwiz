@@ -47,7 +47,7 @@
 				  , #{emp_Tel} 
 				  , #{emp_Dept} 
 				  , #{emp_Position} 
-				  , #{emp_Email} 
+				  , CONCAT(#{emp_Id},'@forwiz.com') 
 				  , #{emp_Id} 
 				  , #{emp_Pw}  
 				  , #{emp_Pwck}  
@@ -68,7 +68,7 @@
 				  , EMP_Tel=#{emp_Tel} 
 				  , EMP_Dept=#{emp_Dept} 
 				  , EMP_Position=#{emp_Position} 
-				  , EMP_Email=#{emp_Email} 
+				  , EMP_Email=CONCAT(#{emp_Id},'@forwiz.com') 
 				  , EMP_ID=#{emp_Id} 
 				  , EMP_PW=#{emp_Pw} 
 				  , EMP_PWck=#{emp_Pwck} 
