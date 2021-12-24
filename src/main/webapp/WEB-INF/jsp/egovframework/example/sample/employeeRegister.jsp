@@ -87,7 +87,7 @@
         			<img width="225px" height="300px" id="image_section" src="#" alt="your photo" /></c:if>        			
         			
         			<c:if test="${registerFlag == 'modify'}">
-        			<img width="225px" height="300px" id="image_section" src="#" alt="your photo" /></c:if>        			
+        			<img width="225px" height="300px" id="image_section" src='C:\upload/' /></c:if>        			
         			</td>
         			
         			<td class="tbtd_caption" width="80px"><label for="emp_Id">아이디</label></td>
@@ -195,7 +195,7 @@
     			<!-- <td>사진등록 버튼 구현 ㄱ</td> -->
     			<td class="tbtd_content">
     				<form:input type ="file" path="uploadFile" id="uploadFile" name="uploadFile" onchange="readURL(this);"/>   				  				
-    				<form:errors path="input_photo" />
+    				<form:errors path="uploadFile" />
     			</td>
     			
     			

@@ -90,7 +90,7 @@
 	<select id="selectEmployee" resultMap="employee">
 
 			SELECT
-				EMP_No, EMP_ID, EMP_PW, EMP_PWck, EMP_Name, EMP_Addr, EMP_Birth, EMP_Dept, EMP_Gen, EMP_Position, EMP_JoinDT, EMP_Email, EMP_Phone, EMP_Tel
+				EMP_No, EMP_ID, EMP_PW, EMP_PWck, EMP_Name, EMP_Addr, EMP_Birth, EMP_Dept, EMP_Gen, EMP_Position, EMP_JoinDT, EMP_Email, EMP_Phone, EMP_Tel, FileName
 			FROM EMPLOYEE
 			WHERE EMP_No=#{emp_No}
 
